@@ -7,8 +7,8 @@ MDM_bikesharing/
 ├── data_cleaning.py            # step1
 ├── data/                   
 │   ├── raw/                    # Store raw data
-│   ├── data/trips.parquet      # Riding Records
-│   └── data/stations.parquet   # Stations List
+│   ├── data/trips_20xx.parquet      # Trips data in 20xx
+│   └── data/stations_20xx.parquet   # Stations data in 20xx
 ├── docs/                       # Store Documents
 └── README.md
 ```
@@ -75,12 +75,23 @@ Raw CSV files with the following fields:
 
 ### Data Summary
 
+**Data in 2024**
+
 | Metric | Value |
 |--------|-------|
 | Total trip records | 6,662,647 |
 | Complete station info | 4,541,599 (68.2%) |
 | Incomplete station info | 2,121,048 (31.8%) |
 | Number of stations | 848 |
+
+**Data in 2025**
+
+| Metric | Value |
+|--------|-------|
+| Total trip records | 6,114,323 |
+| Complete station info | 4,410,121 (72.1%) |
+| Incomplete station info | 1,704,202 (27.9%) |
+| Number of stations | 820 |
 
 ### Loading Data
 

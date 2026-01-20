@@ -1,1 +1,3 @@
 raw/
+/data/stations_2025.parquet
+/data/trips_2025.parquet
