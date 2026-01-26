@@ -75,7 +75,7 @@ Raw CSV files with the following fields:
 
 ### Data Summary
 
-**Data in 2024**
+**Data in 2025**
 
 | Metric | Value |
 |--------|-------|
@@ -84,7 +84,7 @@ Raw CSV files with the following fields:
 | Incomplete station info | 2,121,048 (31.8%) |
 | Number of stations | 848 |
 
-**Data in 2025**
+**Data in 2024**
 
 | Metric | Value |
 |--------|-------|
