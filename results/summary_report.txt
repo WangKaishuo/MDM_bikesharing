@@ -1,0 +1,109 @@
+Capital Bikeshare Station Predictability Analysis Report
+  Number of stations analyzed: 278
+  Stations with valid results: 278
+  Stations failed: 0
+  Model: Prophet with weather regressors
+  Seasonality: Yearly + Weekly (multiplicative)
+
+[WEATHER REGRESSORS USED]
+  - temp_mean: Daily mean temperature (°C)
+  - temp_squared: Temperature squared (captures non-linear effect)
+  - precipitation: Daily precipitation (mm)
+
+[MODEL RATIONALE]
+  The model uses only scientifically justified features:
+  - Prophet automatically captures weekly and yearly seasonality
+  - Temperature has an inverted U-shape effect on biking
+    (both too cold and too hot reduce ridership)
+  - Precipitation directly discourages biking
+  No event-specific features (holidays, festivals) are included
+  to maintain model generalizability and interpretability.
+
+[MAPE STATISTICS]
+  Mean MAPE: 45.21%
+  Median MAPE: 40.59%
+  Min MAPE: 18.48%
+  Max MAPE: 137.97%
+  Std MAPE: 20.42%
+
+[PREDICTABILITY DISTRIBUTION]
+  Excellent (MAPE < 20%):     1 stations (0.4%)
+  Good (20% <= MAPE < 30%):   65 stations (23.4%)
+  Moderate (30% <= MAPE < 50%): 141 stations (50.7%)
+  Poor (MAPE >= 50%):         71 stations (25.5%)
+
+[TOP 10 MOST PREDICTABLE STATIONS] (Lowest MAPE)
+    1. 14th & Belmont St NW                     MAPE=18.48%
+    2. Georgia & New Hampshire Ave NW           MAPE=20.53%
+    3. Columbia Rd & Belmont St NW              MAPE=21.69%
+    4. 8th & O St NW                            MAPE=22.32%
+    5. California St & Florida Ave NW           MAPE=22.33%
+    6. Convention Center / 7th & M St NW        MAPE=22.34%
+    7. New Hampshire Ave & T St NW              MAPE=22.37%
+    8. 8th & F St NE                            MAPE=22.42%
+    9. 15th & P St NW                           MAPE=22.46%
+   10. 4th & M St SW                            MAPE=22.62%
+
+[TOP 10 LEAST PREDICTABLE STATIONS] (Highest MAPE)
+  278. 24th & R St NE / National Arboretum      MAPE=137.97%
+  277. Gravelly Point                           MAPE=131.23%
+  276. 34th & Water St NW                       MAPE=128.57%
+  275. American University East Campus          MAPE=117.24%
+  274. Jefferson Memorial                       MAPE=109.63%
+  273. 17th St & Independence Ave SW            MAPE=106.07%
+  272. 22nd St & Constitution Ave NW            MAPE=104.17%
+  271. Roosevelt Island                         MAPE=103.61%
+  270. Jefferson Dr & 14th St SW                MAPE=103.12%
+  269. 8th & K St NE                            MAPE=100.00%
+
+[PREDICTABILITY VS USAGE RELATIONSHIP]
+  Correlation between MAPE and daily average: -0.274
+  Interpretation: No strong relationship between usage and predictability
+======================================================================
+PREDICTABILITY ANALYSIS: Why are some stations more predictable?
+======================================================================
+
+[CORRELATION WITH MAPE]
+(Positive = higher value → less predictable)
+
+  Coefficient of Variation (variability): r = 0.638
+  Weekend/Weekday ratio: r = 0.396
+  Summer/Winter ratio: r = 0.592
+  Spike frequency (%): r = 0.613
+  Daily average usage: r = -0.274
+
+[TOP 10 vs BOTTOM 10 COMPARISON]
+
+Metric                              Most Predictable     Least Predictable   
+---------------------------------------------------------------------------
+Avg Daily Departures                65.10                30.08               
+Coefficient of Variation            0.39                 0.81                
+Weekend/Weekday Ratio               1.02                 1.67                
+Summer/Winter Ratio                 1.78                 3.42                
+Spike Days (%)                      0.00                 2.65                
+
+[STATION TYPE INFERENCE]
+
+  Most Predictable Stations (likely COMMUTER stations):
+    - 14th & Belmont St NW
+      CV=0.39, Weekend/Weekday=1.01
+    - Georgia & New Hampshire Ave NW
+      CV=0.45, Weekend/Weekday=0.94
+    - Columbia Rd & Belmont St NW
+      CV=0.43, Weekend/Weekday=1.13
+    - 8th & O St NW
+      CV=0.34, Weekend/Weekday=1.15
+    - California St & Florida Ave NW
+      CV=0.37, Weekend/Weekday=1.17
+
+  Least Predictable Stations (likely TOURIST stations):
+    - 24th & R St NE / National Arboretum
+      CV=0.95, Spike%=5.7%
+    - Gravelly Point
+      CV=0.87, Spike%=3.5%
+    - 34th & Water St NW
+      CV=0.80, Spike%=3.3%
+    - American University East Campus
+      CV=0.83, Spike%=3.8%
+    - Jefferson Memorial
+      CV=0.83, Spike%=2.3%
